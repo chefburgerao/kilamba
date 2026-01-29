@@ -157,6 +157,24 @@ header .logo img {
       flex-direction: column;
       z-index: 999;
     }
+	/* Mobile */
+@media (max-width: 768px) {
+  .desktop-controls { display: none; }
+  .mobile-buttons { display: flex; justify-content: flex-end; gap: 0.5rem; }
+
+  #carrinho {
+    display: none;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    border-left: none;
+    box-shadow: none;
+    z-index: 2000;
+  }
+  #carrinho.active { display: flex; }
+}
+
 
     #cart-scroll { flex: 1; overflow-y: auto; padding: 1rem; }
     #cart-footer { padding: 1rem; border-top: 1px solid #eee; background: #fff; }
@@ -212,16 +230,29 @@ header .logo img {
       main.content { margin-right: 0; }
       footer { width: 100%; }
     }
+	
+	
 	/* Endereço e telefone no header */
+/* Endereço compacto no mobile */
 .header-info {
   position: absolute;
   left: 1rem;
-  bottom: 0.4rem;
+  bottom: 0.6rem;
   font-size: 0.85rem;
   color: #fff;
-  text-align: left;
-  line-height: 1.2;
+  max-width: 55%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
+/* Mobile */
+@media (max-width: 768px) {
+  .desktop-controls { display: none; }
+  .mobile-buttons { display: flex; justify-content: flex-end; gap: 0.5rem; }
+
+
+
 
 .header-info {
   position: absolute;
@@ -258,7 +289,7 @@ header .logo img {
   <!-- Botões Mobile -->
   <div class="mobile-buttons">
     <button id="btnMenu">☰ Menu</button>
-    <button id="btnCarrinho">🛒 Carrinho</button>
+    <button id="btnCarrinho">Minha Encomenda</button>
   </div>
 
   <!-- Filtro e botão WhatsApp (desktop) -->
@@ -273,10 +304,8 @@ header .logo img {
       <option value="frias">Bebidas Frias</option>
       <option value="bebidas-quentes">Bebidas Quentes</option>
       <option value="sobremesas">Sobremesas</option>
-	  <option value="matabicho">Matabicho</option>
-	  <option value="sumos">Sumos</option>
-	  
-	  
+      <option value="matabicho">Matabicho</option>
+      <option value="sumos">Sumos</option>
     </select>
     <button onclick="filtrarCategoria('')">Limpar Filtro</button>
     <a href="https://wa.me/244925918468" target="_blank" class="btn-whatsapp">posso ajudar?</a>
@@ -284,10 +313,11 @@ header .logo img {
 
   <!-- Endereço e telefone -->
   <div class="header-info">
-  <span class="luxo-endereco">🍽 Turkish Food – Luanda, Kilamba Quarteirão W17</span><br>
-  <span class="luxo-telefone">📞 +244 925 918 462 | +244 925 918 468 | +244 930 877 600</span>
-</div>
+    <span class="luxo-endereco">🍽 Turkish Food – Luanda, Kilamba Quarteirão W17</span><br>
+    <span class="luxo-telefone">📞 +244 925 918 462 | +244 925 918 468 | +244 930 877 600</span>
+  </div>
 </header>
+
 
 <main class="content">
 
@@ -673,6 +703,7 @@ header .logo img {
   
   <!-- Categoria Frias -->
 <div class="product" data-categoria="frias">
+<img src="imagens/agua-500ml.jpg" alt="Agua 500ml">
   <h3>Agua 500ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p200','Agua 500ml',1000,'sug200')">Adicionar</button>
@@ -680,6 +711,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/agua-1500ml.jpg" alt="Agua 500ml">
   <h3>Agua 1500ml</h3>
   <div class="price" data-preco="2500">2.500,00 KZ</div>
   <button onclick="adicionarItem('p201','Agua 1500ml',2500,'sug201')">Adicionar</button>
@@ -687,20 +719,23 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
-  <h3>Coco Cola 330ml</h3>
+<img src="imagens/coca-330ml.jpg" alt="Agua 500ml">
+  <h3>Coca Cola 330ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
-  <button onclick="adicionarItem('p202','Coco Cola 330ml',1000,'sug202')">Adicionar</button>
+  <button onclick="adicionarItem('p202','Coca Cola 330ml',1000,'sug202')">Adicionar</button>
   <div class="sugestao" id="sug202"></div>
 </div>
 
 <div class="product" data-categoria="frias">
-  <h3>Coco Cola 1500ml</h3>
+<img src="imagens/Coca-Cola-1500ml.jpg" alt="Agua 500ml">
+  <h3>Coca Cola 1500ml</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
-  <button onclick="adicionarItem('p203','Coco Cola 1500ml',2000,'sug203')">Adicionar</button>
+  <button onclick="adicionarItem('p203','Coca Cola 1500ml',2000,'sug203')">Adicionar</button>
   <div class="sugestao" id="sug203"></div>
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/pepsi-330ml.jpg" alt="Pepsi 330ml">
   <h3>Pepsi 330ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p204','Pepsi 330ml',1000,'sug204')">Adicionar</button>
@@ -708,6 +743,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/fanta-330ml.jpg" alt="Fanta 330ml">
   <h3>Fanta 330ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p205','Fanta 330ml',1000,'sug205')">Adicionar</button>
@@ -715,6 +751,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/fanta-1500ml.jpg" alt="Fanta 1500ml">
   <h3>Fanta 1500ml</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
   <button onclick="adicionarItem('p206','Fanta 1500ml',2000,'sug206')">Adicionar</button>
@@ -722,6 +759,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/sprite-330ml.jpg" alt="Sprite 330ml">
   <h3>Sprite 330ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p207','Sprite 330ml',1000,'sug207')">Adicionar</button>
@@ -729,6 +767,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/sprite-1500ml.jpg" alt="Sprite 1500ml">
   <h3>Sprite 1500ml</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
   <button onclick="adicionarItem('p208','Sprite 1500ml',2000,'sug208')">Adicionar</button>
@@ -736,6 +775,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/Redbull-200ml.jpg" alt="Redbull 200ml">
   <h3>Redbull 200ml</h3>
   <div class="price" data-preco="3500">3.500,00 KZ</div>
   <button onclick="adicionarItem('p209','Redbull 200ml',3500,'sug209')">Adicionar</button>
@@ -743,6 +783,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/agua-tonica-330ml.jpg" alt="Agua Tonica 330ml">
   <h3>Agua Tonica 330ml</h3>
   <div class="price" data-preco="2500">2.500,00 KZ</div>
   <button onclick="adicionarItem('p210','Agua Tonica 330ml',2500,'sug210')">Adicionar</button>
@@ -750,6 +791,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/sumol-De-ananas-330ml.jpg" alt="Sumol De Ananas 330ml">
   <h3>Sumol De Ananas 330ml</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p211','Sumol De Ananas 330ml',1000,'sug211')">Adicionar</button>
@@ -757,6 +799,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/sumol-laranja-330ml.jpg" alt="Sumol de Laranja">
   <h3>Sumol de Laranja</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
   <button onclick="adicionarItem('p212','Sumol de Laranja',2000,'sug212')">Adicionar</button>
@@ -764,6 +807,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/limonada-pq.jpg" alt="Limonada Pequena">
   <h3>Limonada Pequena</h3>
   <div class="price" data-preco="1000">1.000,00 KZ</div>
   <button onclick="adicionarItem('p213','Limonada Pequena',1000,'sug213')">Adicionar</button>
@@ -771,6 +815,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/limonada-gr.jpg" alt="Limonada Grande">
   <h3>Limonada Grande</h3>
   <div class="price" data-preco="2500">2.500,00 KZ</div>
   <button onclick="adicionarItem('p214','Limonada Grande',2500,'sug214')">Adicionar</button>
@@ -778,6 +823,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/milkshake-banana.jpg" alt="ilkshake Banana">
   <h3>Milkshake Banana</h3>
   <div class="price" data-preco="7000">7.000,00 KZ</div>
   <button onclick="adicionarItem('p215','Milkshake Banana',7000,'sug215')">Adicionar</button>
@@ -785,6 +831,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/milkshake-choco.jpg" alt="Milkshake Chocolate">
   <h3>Milkshake Chocolate</h3>
   <div class="price" data-preco="7500">7.500,00 KZ</div>
   <button onclick="adicionarItem('p216','Milkshake Chocolate',7500,'sug216')">Adicionar</button>
@@ -792,6 +839,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/milkshake-mist.jpg" alt="Milkshake Misto">
   <h3>Milkshake Misto</h3>
   <div class="price" data-preco="8000">8.000,00 KZ</div>
   <button onclick="adicionarItem('p217','Milkshake Misto',8000,'sug217')">Adicionar</button>
@@ -799,6 +847,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/Batido-Abacate.jpg" alt="Batido de Abacate">
   <h3>Batido de Abacate</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
   <button onclick="adicionarItem('p218','Batido de Abacate',6000,'sug218')">Adicionar</button>
@@ -806,6 +855,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="frias">
+<img src="imagens/Batido-misto.jpg" alt="Batido Misto">
   <h3>Batido Misto</h3>
   <div class="price" data-preco="7000">7.000,00 KZ</div>
   <button onclick="adicionarItem('p219','Batido Misto',7000,'sug219')">Adicionar</button>
@@ -814,7 +864,9 @@ header .logo img {
   
   
 <!-- Categoria Sobremesas -->
+
 <div class="product" data-categoria="sobremesas">
+<img src="imagens/paste-morango.jpg" alt="Pasta">
   <h3>Pasta</h3>
   <div class="price" data-preco="4000">4.000,00 KZ</div>
   <button onclick="adicionarItem('p300','Pasta',4000,'sug300')">Adicionar</button>
@@ -822,6 +874,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sobremesas">
+<img src="imagens/cheescake-morango.jpg" alt="Cheesecake De Morango">
   <h3>Cheesecake De Morango</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
   <button onclick="adicionarItem('p301','Cheesecake De Morango',2000,'sug301')">Adicionar</button>
@@ -829,13 +882,17 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sobremesas">
+<img src="imagens/magnolia-morango.jpg" alt="Magnolia">
   <h3>Magnolia</h3>
   <div class="price" data-preco="4500">4.500,00 KZ</div>
   <button onclick="adicionarItem('p302','Magnolia',4500,'sug302')">Adicionar</button>
   <div class="sugestao" id="sug302"></div>
 </div>
+
 <!-- Categoria Bebidas Quentes -->
+
 <div class="product" data-categoria="bebidas-quentes">
+<img src="imagens/galao-copo.jpg" alt="Galao">
   <h3>Galao</h3>
   <div class="price" data-preco="4500">4.500,00 KZ</div>
   <button onclick="adicionarItem('p400','Galao',4500,'sug400')">Adicionar</button>
@@ -843,6 +900,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="bebidas-quentes">
+<img src="imagens/cafe-expresso.jpg" alt="Agua 500ml">
   <h3>Cafe Expresso</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
   <button onclick="adicionarItem('p401','Cafe Expresso',2000,'sug401')">Adicionar</button>
@@ -850,6 +908,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="bebidas-quentes">
+<img src="imagens/cafe-turco.jpg" alt="Cafe Turco">
   <h3>Cafe Turco</h3>
   <div class="price" data-preco="3000">3.000,00 KZ</div>
   <button onclick="adicionarItem('p402','Cafe Turco',3000,'sug402')">Adicionar</button>
@@ -857,6 +916,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="bebidas-quentes">
+<img src="imagens/cha-normal.jpg" alt="Cha">
   <h3>Cha</h3>
   <div class="price" data-preco="3000">3.000,00 KZ</div>
   <button onclick="adicionarItem('p403','Cha',3000,'sug403')">Adicionar</button>
@@ -864,14 +924,17 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="bebidas-quentes">
-  <h3>Cay Turco</h3>
+<img src="imagens/cha-turco.jpg" alt="Cha Turco">
+  <h3>Cha Turco</h3>
   <div class="price" data-preco="2000">2.000,00 KZ</div>
-  <button onclick="adicionarItem('p404','Cay Turco',2000,'sug404')">Adicionar</button>
+  <button onclick="adicionarItem('p404','Cha Turco',2000,'sug404')">Adicionar</button>
   <div class="sugestao" id="sug404"></div>
 </div>
 
 <!-- Categoria Sumos -->
+
 <div class="product" data-categoria="sumos">
+<img src="imagens/limonada-turca.jpg" alt="Limonada Turca">
   <h3>Limonada Turca</h3>
   <div class="price" data-preco="2500">2.500,00 KZ</div>
   <button onclick="adicionarItem('p500','Limonada Turca',2500,'sug500')">Adicionar</button>
@@ -879,6 +942,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sumos">
+<img src="imagens/sumo-pitaia.jpg" alt="Sumo Natural De Pitaia">
   <h3>Sumo Natural De Pitaia</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
   <button onclick="adicionarItem('p501','Sumo Natural De Pitaia',6000,'sug501')">Adicionar</button>
@@ -886,6 +950,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sumos">
+<img src="imagens/sumo-tomate.jpg" alt="Sumo Natural De Tomate">
   <h3>Sumo Natural De Tomate</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
   <button onclick="adicionarItem('p502','Sumo Natural De Tomate',6000,'sug502')">Adicionar</button>
@@ -893,20 +958,23 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sumos">
-  <h3>Sumo Natural De Maca</h3>
+<img src="imagens/sumo-maca.jpg" alt="Sumo Natural De Maça">
+  <h3>Sumo Natural De Maça</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
-  <button onclick="adicionarItem('p503','Sumo Natural De Maca',6000,'sug503')">Adicionar</button>
+  <button onclick="adicionarItem('p503','Sumo Natural De Maça',6000,'sug503')">Adicionar</button>
   <div class="sugestao" id="sug503"></div>
 </div>
 
 <div class="product" data-categoria="sumos">
-  <h3>Sumo Natural De Melangel</h3>
+<img src="imagens/sumo-melan.jpg" alt="Sumo Natural de Melancia">
+  <h3>Sumo Natural de Melancia</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
-  <button onclick="adicionarItem('p504','Sumo Natural De Melangel',6000,'sug504')">Adicionar</button>
+  <button onclick="adicionarItem('p504','Sumo Natural de Melancia',6000,'sug504')">Adicionar</button>
   <div class="sugestao" id="sug504"></div>
 </div>
 
 <div class="product" data-categoria="sumos">
+<img src="imagens/sumo-maracuja.jpg" alt="Sumo Natural De Marauja">
   <h3>Sumo Natural De Marauja</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
   <button onclick="adicionarItem('p505','Sumo Natural De Marauja',6000,'sug505')">Adicionar</button>
@@ -914,6 +982,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sumos">
+<img src="imagens/sumo-cenoura.jpg" alt="Sumo Natural De Cenoura">
   <h3>Sumo Natural De Cenoura</h3>
   <div class="price" data-preco="6000">6.000,00 KZ</div>
   <button onclick="adicionarItem('p506','Sumo Natural De Cenoura',6000,'sug506')">Adicionar</button>
@@ -921,6 +990,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="sumos">
+<img src="imagens/sumo-misto.jpg" alt="Sumo Natural Misto">
   <h3>Sumo Natural Misto</h3>
   <div class="price" data-preco="6500">6.500,00 KZ</div>
   <button onclick="adicionarItem('p507','Sumo Natural Misto',6500,'sug507')">Adicionar</button>
@@ -928,7 +998,9 @@ header .logo img {
 </div>
 
 <!-- Categoria Matabicho -->
+
 <div class="product" data-categoria="matabicho">
+<img src="imagens/omelete-queijo.jpg" alt="Omelete de Queijo">
   <h3>Omelete de Queijo</h3>
   <div class="price" data-preco="7000">7.000,00 KZ</div>
   <button onclick="adicionarItem('p600','Omelete de Queijo',7000,'sug600')">Adicionar</button>
@@ -936,6 +1008,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="matabicho">
+<img src="imagens/omelete-carne.jpg" alt="Omelete de Carne">
   <h3>Omelete de Carne</h3>
   <div class="price" data-preco="8000">8.000,00 KZ</div>
   <button onclick="adicionarItem('p601','Omelete de Carne',8000,'sug601')">Adicionar</button>
@@ -943,6 +1016,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="matabicho">
+<img src="imagens/omelete-frango.jpg" alt="Omelete de Frango">
   <h3>Omelete de Frango</h3>
   <div class="price" data-preco="7500">7.500,00 KZ</div>
   <button onclick="adicionarItem('p602','Omelete de Frango',7500,'sug602')">Adicionar</button>
@@ -950,28 +1024,35 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="matabicho">
+<img src="imagens/omelete-misto.jpg" alt="Omelete Misto">
   <h3>Omelete Misto</h3>
   <div class="price" data-preco="9000">9.000,00 KZ</div>
   <button onclick="adicionarItem('p603','Omelete Misto',9000,'sug603')">Adicionar</button>
   <div class="sugestao" id="sug603"></div>
 </div>
 
-<!-- Outros Itens -->
-<div class="product" data-categoria="matabicho">
+<!-- Doses -->
+
+<div class="product" data-categoria="doses">
+<img src="imagens/batatas-fritas.jpg" alt="Batata Fritas">
   <h3>Batata Fritas</h3>
   <div class="price" data-preco="4000">4.000,00 KZ</div>
   <button onclick="adicionarItem('p604','Batata Fritas',4000,'sug604')">Adicionar</button>
   <div class="sugestao" id="sug604"></div>
 </div>
 
-<div class="product" data-categoria="matabicho">
+<!-- Sopas -->
+
+<div class="product" data-categoria="sopas">
+<img src="imagens/sopa-tomate.jpg" alt="Sopa de Tomate">
   <h3>Sopa de Tomate</h3>
   <div class="price" data-preco="5000">5.000,00 KZ</div>
   <button onclick="adicionarItem('p605','Sopa de Tomate',5000,'sug605')">Adicionar</button>
   <div class="sugestao" id="sug605"></div>
 </div>
 
-<div class="product" data-categoria="matabicho">
+<div class="product" data-categoria="sopas">
+<img src="imagens/sopa-turca-lentilha.jpg" alt="Sopa Turca de Lentilha">
   <h3>Sopa Turca de Lentilha</h3>
   <div class="price" data-preco="5000">5.000,00 KZ</div>
   <button onclick="adicionarItem('p606','Sopa Turca de Lentilha',5000,'sug606')">Adicionar</button>
@@ -979,6 +1060,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="matabicho">
+<img src="imagens/torrada-queijo.jpg" alt="Torrada de Queijo">
   <h3>Torrada de Queijo</h3>
   <div class="price" data-preco="6500">6.500,00 KZ</div>
   <button onclick="adicionarItem('p607','Torrada de Queijo',6500,'sug607')">Adicionar</button>
@@ -986,6 +1068,7 @@ header .logo img {
 </div>
 
 <div class="product" data-categoria="matabicho">
+<img src="imagens/torrada-mista.jpg" alt="Torrada Mista">
   <h3>Torrada Mista</h3>
   <div class="price" data-preco="8000">8.000,00 KZ</div>
   <button onclick="adicionarItem('p608','Torrada Mista',8000,'sug608')">Adicionar</button>
