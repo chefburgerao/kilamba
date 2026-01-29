@@ -1,0 +1,176 @@
+:root {
+  --primary: #000;       /* preto institucional */
+  --accent: #FFD700;     /* dourado */
+  --bg: #fff8f8;
+  --text: #222;
+  --card: #fff;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+}
+
+/* HEADER */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 107px;
+  background: var(--primary);
+  color: #fff;
+  display: flex;
+  justify-content: space-between; /* logo à esquerda, botões à direita */
+  align-items: center;
+  padding: 0.100rem 1rem;
+  z-index: 1000;
+}
+
+.logo img {
+  height: 90px;
+  display: block;
+}
+
+.desktop-controls {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.mobile-controls {
+  display: none;
+  gap: 0.5rem;
+}
+
+.btn-info {
+  background: #007BFF;
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* MAIN CONTENT */
+main.content {
+  margin-top: 107px;
+  padding: 0;
+  text-align: center;
+}
+
+/* Seção de informações */
+.info-section {
+  margin: 1.5rem auto;
+  max-width: 900px;
+}
+
+.info-section h1 {
+  margin-bottom: 0.5rem;
+  color: var(--primary);
+}
+
+.info-section p {
+  margin: 0.3rem 0;
+}
+
+/* Botão WhatsApp */
+.btn-whatsapp {
+  display: inline-block;
+  background: #25D366;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  margin-top: 1rem;
+}
+
+/* Seção do Chef */
+.chef-section {
+  width: 100%;
+  height: calc(100vh - 107px); /* ocupa toda a altura visível no desktop */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.chef-section h2 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+/* Imagem do Chef */
+.chef-img {
+  width: auto;
+  max-height: 100%; /* ocupa toda a altura disponível */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* FOOTER */
+footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 1.5rem;
+  margin-top: 2rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.footer-left img {
+  height: 80px;
+  margin-right: 1rem;
+}
+
+.footer-right {
+  text-align: right;
+}
+
+.footer-right p {
+  margin: 0.3rem 0;
+}
+
+.footer-right .slogan {
+  font-style: italic;
+  margin-top: 0.5rem;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem;
+  }
+
+  .desktop-controls { display: none; }
+  .mobile-controls { display: flex; margin-top: 0.5rem; }
+
+  .chef-section {
+    height: auto; /* no mobile não força altura total */
+    padding: 1rem;
+  }
+
+  .chef-img {
+    width: 100%;   /* ocupa toda a largura da tela */
+    max-height: auto;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .footer-right {
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
