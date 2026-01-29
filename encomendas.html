@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chef Burger – Encomendas</title>
+  <link rel="icon" type="image/jpeg" href="imagens/logo-chefburger.jpg">
+
+  <style>
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: #fff8f8;
+      margin: 0;
+      color: #222;
+    }
+
+    /* HEADER idêntico ao index */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      height: 107px;
+      background: #000;
+      color: #fff;
+      display: flex;
+      justify-content: center;   /* centraliza logo */
+      align-items: center;
+      padding: 0.6rem 1rem;
+      z-index: 1000;
+    }
+
+    header .logo {
+      text-align: center;
+    }
+
+    header .logo img {
+      height: 100px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Botões posicionados à direita */
+    .desktop-controls, .mobile-buttons {
+      position: absolute;
+      right: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .btn-voltar {
+      background: #444;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-voltar:hover { background: #666; }
+
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+	  margin-right: 35px;
+    }
+    .btn-whatsapp:hover { background: #1DA851; }
+
+    @media (max-width: 768px) {
+      .desktop-controls { display: none; }
+      .mobile-buttons { display: flex; justify-content: flex-end; }
+    }
+	
+	    /* Carrinho */
+    #carrinho {
+      max-width: 600px;
+      margin: 140px auto 2rem auto;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+      padding: 1rem;
+    }
+
+    .cart-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .item-name { flex: 2; }
+    .item-controls { flex: 1; display: flex; justify-content: center; gap: 0.5rem; }
+    .item-price { flex: 1; text-align: right; font-weight: bold; color: #8B0000; }
+    .remove { background: none; border: none; color: red; cursor: pointer; }
+
+    .btn-finalizar {
+      width: 100%;
+      background: #000;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      padding: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+
+    #sugestoes {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      padding: 1rem;
+      background: #f9f9f9;
+      border-radius: 8px;
+    }
+
+    #sugestoes h3 {
+      margin-top: 0;
+      color: #8B0000;
+    }
+	/* Endereço e telefone no header */
+.header-info {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.4rem;
+  font-size: 0.85rem;
+  color: #fff;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.header-info {
+  position: absolute;
+  left: 1rem;
+  bottom: 0.6rem;
+  font-size: 0.9rem;
+  text-align: left;
+  line-height: 1.4;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.luxo-endereco {
+  color: #FFD700; /* dourado */
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.luxo-telefone {
+  color: #fff;
+  font-weight: 500;
+}
+	
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <a href="index.html">
+      <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
+    </a>
+  </div>
+
+  <!-- Botões Mobile -->
+  <div class="mobile-buttons">
+    <a href="index.html" class="btn-voltar">⬅ Voltar ao Menu</a>
+    <a href="https://wa.me/244925918468" target="_blank" class="btn-whatsapp">posso ajudar?</a>
+  </div>
+
+  <!-- Botões Desktop -->
+  <div class="desktop-controls">
+    <a href="index.html" class="btn-voltar">⬅ Voltar ao Menu</a>
+    <a href="https://wa.me/244925918468" target="_blank" class="btn-whatsapp">posso ajudar?</a>
+  </div>
+  
+   <!-- Endereço e telefone -->
+  <div class="header-info">
+  <span class="luxo-endereco">🍽 Turkish Food – Luanda, Kilamba Quarteirão W17</span><br>
+  <span class="luxo-telefone">📞 +244 925 918 462 | +244 925 918 468 | +244 930 877 600</span>
+</div>
+  
+</header>
+
+<div id="carrinho">
+  <h2>Seu Carrinho</h2>
+  <div id="cart-scroll"></div>
+  <button class="btn-finalizar" onclick="encomendarWhatsApp()">Encomendar no WhatsApp</button>
+</div>
+
+<div id="sugestoes">
+  <h3>Quem comprou isso também levou:</h3>
+  <ul id="lista-sugestoes"></ul>
+</div>
+
+<script>
+  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
+
+  function formatarPreco(valor) {
+    return valor.toLocaleString("pt-AO") + " KZ";
+  }
+
+  function renderCarrinho() {
+    const scroll = document.getElementById("cart-scroll");
+    scroll.innerHTML = "";
+    let total = 0;
+    carrinho.forEach(i => {
+      total += i.preco * i.qtd;
+      const div = document.createElement("div");
+      div.className = "cart-item";
+      div.innerHTML = `
+        <span class="item-name">${i.nome}</span>
+        <div class="item-controls">
+          <button onclick="alterarQtd('${i.id}', -1)">-</button>
+          <span>${i.qtd}</span>
+          <button onclick="alterarQtd('${i.id}', 1)">+</button>
+        </div>
+        <span class="item-price">${formatarPreco(i.preco * i.qtd)}</span>
+        <button class="remove" onclick="removerCarrinho('${i.id}')">x</button>
+      `;
+      scroll.appendChild(div);
+    });
+    scroll.innerHTML += `<p><strong>Total: ${formatarPreco(total)}</strong></p>`;
+  }
+
+  function alterarQtd(id, delta) {
+    const item = carrinho.find(i => i.id === id);
+    if (!item) return;
+    item.qtd += delta;
+    if (item.qtd <= 0) removerCarrinho(id);
+    salvarCarrinho();
+  }
+
+  function removerCarrinho(id) {
+    carrinho = carrinho.filter(i => i.id !== id);
+    salvarCarrinho();
+  }
+
+  function salvarCarrinho() {
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    renderCarrinho();
+  }
+
+  function encomendarWhatsApp() {
+  if (carrinho.length === 0) {
+    alert("Seu carrinho está vazio.");
+    return;
+  }
+
+  // Mensagens institucionais sem referência a horário
+  const mensagensIniciais = [
+    "Olá, gostaria de encomendar:",
+    "Olá Chef Burger, segue meu pedido:",
+    "Saudações, aqui está minha encomenda:",
+    "Gostaria de fazer um pedido:",
+    "Olá, preciso encomendar os seguintes itens:"
+  ];
+
+  // Escolhe uma aleatória
+  const inicio = mensagensIniciais[Math.floor(Math.random() * mensagensIniciais.length)];
+
+  let mensagem = inicio + "\n\n";
+  carrinho.forEach(i => {
+    mensagem += `• ${i.qtd}x ${i.nome} - ${formatarPreco(i.preco * i.qtd)}\n`;
+  });
+
+  let total = carrinho.reduce((acc, i) => acc + i.preco * i.qtd, 0);
+  mensagem += `\nTotal: ${formatarPreco(total)}\n`;
+
+  const numero = "244925918468";
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+  window.open(url, "_blank");
+
+  localStorage.removeItem("carrinho");
+  carrinho = [];
+  window.location.href = "index.html";
+}
+
+ function gerarSugestoes() {
+    const lista = document.getElementById("lista-sugestoes");
+    lista.innerHTML = "";
+
+    if (carrinho.some(i => i.nome.includes("Hamburguer"))) {
+      lista.innerHTML += "<li>Batatas Fritas Premium</li><li>Bebida Gelada 500ml</li>";
+    }
+
+    if (carrinho.some(i => i.nome.includes("Pizza"))) {
+      lista.innerHTML += "<li>Sobremesa Brownie</li><li>Refrigerante Lata</li>";
+    }
+
+    if (carrinho.some(i => i.nome.includes("Fahita"))) {
+      lista.innerHTML += "<li>Molho Picante Especial</li><li>Bebida Refrescante</li>";
+    }
+
+    if (carrinho.some(i => i.nome.includes("Café") || i.nome.includes("Chá"))) {
+      lista.innerHTML += "<li>Cheesecake de Morango</li><li>Bolo Caseiro</li>";
+    }
+
+    if (carrinho.some(i => i.nome.includes("Sobremesa") || i.nome.includes("Milkshake") || i.nome.includes("Batido"))) {
+      lista.innerHTML += "<li>Café Expresso</li><li>Chá Turco</li>";
+    }
+
+   // Caso não haja nenhuma correspondência
+if (lista.innerHTML === "") {
+  lista.innerHTML = "<li>Experimente nossas novas sobremesas!</li>";
+}
+}
+
+// Inicializar carrinho e sugestões ao carregar a página
+renderCarrinho();
+gerarSugestoes();
+</script>
+</body>
+</html>
