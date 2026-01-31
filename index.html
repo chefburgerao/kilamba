@@ -57,7 +57,7 @@
   </header>
 
   <!-- BOTÃO MENU MOBILE -->
-  <button class="btn-menu-mobile" onclick="toggleMenu()">Opções</button>
+  <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
 
   <!-- MENU RECOLHÍVEL MOBILE -->
   <nav class="menu-mobile" id="menuMobile">
@@ -80,11 +80,10 @@
       <option value="sopas">Sopas</option>
     </select>
 
-    <button onclick="resetarFiltro()" class="btn-nav limpar">Limpar Filtro</button>
-	<a href="encomendas.html" class="btn-nav">Encomendas</a>
-    <a href="informacoes.html" class="btn-nav">Informações</a>
-    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">WhatsApp</a>
-    
+    <a href="index.html" class="btn-nav">🔵 Menu</a>
+    <a href="informacoes.html" class="btn-nav">🔵 Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+    <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
   </nav>
 
   <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
@@ -108,11 +107,11 @@
       <option value="sopas">Sopas</option>
     </select>
 
-    
-  <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
-  <a href="encomendas.html" class="btn-nav">Encomendas</a>
-  <a href="informacoes.html" class="btn-nav">🔵 Informações</a>
-  <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+
+	<button onclick="resetarFiltro()" class="btn-nav limpar">Limpar</button>
+    <a href="encomendas.html" class="btn-nav">Encomenda</a>
+    <a href="informacoes.html" class="btn-nav">Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
     
   </nav>
 
@@ -349,15 +348,15 @@
   </div>
 
   <!-- Kafta -->
-  <div class="product" data-categoria="Kafta">
-    <img src="imagens/Kafta-grelhado.jpg" alt="Kafta Grelhado">
+  <div class="product" data-categoria="kafta">
+    <img src="imagens/Kafta-grelhado.jpg" alt="kafta Grelhado">
     <h3>Kafta Grelhado</h3>
     <div class="price" data-preco="13500">13.500,00 KZ</div>
     <button onclick="adicionarItem('p027','Kafta Grelhado',13500,'sug027')">Adicionar</button>
     <div class="sugestao" id="sug027"></div>
-  </div>
+  </div>	
 
-  <div class="product" data-categoria="Kafta">
+  <div class="product" data-categoria="kafta">
     <img src="imagens/kafta.jpg" alt="Kafta">
     <h3>Kafta</h3>
     <div class="price" data-preco="14500">14.500,00 KZ</div>
@@ -879,6 +878,8 @@
   <div class="sugestao" id="sug608"></div>
 </div>
   </main>
+  
+  <button class="btn-carrinho-flutuante" onclick="abrirCarrinho()">🛒 Ver Carrinho</button>
  <!-- FOOTER -->
   <footer>
     <div class="footer-content">
@@ -896,5 +897,3 @@
   </script>
 </body>
 </html>
-
-
