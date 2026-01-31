@@ -112,7 +112,7 @@
       max-width: 900px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin: 1rem auto 2.5rem auto; /* separação clara do footer */
+      margin: 1rem auto 2.5rem auto;
       display: block;
       object-fit: contain;
     }
@@ -130,20 +130,52 @@
     footer {
       background: #000;
       color: #fff;
-      font-size: 0.85rem;
-      padding: 0.6rem;
+      font-size: 0.9rem;
+      padding: 0.8rem;
       text-align: center;
     }
     .footer-line {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
-      gap: 10px;
-      margin-bottom: 0.4rem;
+      gap: 6px;
+      margin-bottom: 0.6rem;
     }
     .footer-line img { height: 30px; }
-    .slogan { font-style: italic; margin: 0; }
+    .footer-line strong {
+      font-size: 1rem;
+      color: #25D366;
+    }
+    .footer-line p {
+      margin: 0;
+      font-weight: bold;
+    }
+    .slogan {
+      font-style: italic;
+      margin: 0;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* BOTÃO WHATSAPP FLUTUANTE */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #25D366;
+      color: #fff;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      z-index: 1100;
+      text-decoration: none;
+    }
   </style>
 </head>
 <body>
@@ -158,14 +190,13 @@
   </header>
 
   <!-- BOTÃO MENU MOBILE -->
-  <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
+  <button class="btn-menu-mobile" onclick="toggleMenu()">Opções</button>
 
   <!-- MENU MOBILE -->
   <nav class="menu-mobile" id="menuMobile">
-    <a href="index.html" class="btn-nav">🍽 Menu</a>
-    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
-    <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
-    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+    <a href="index.html" class="btn-nav">Menu</a>
+    <a href="encomendas.html" class="btn-nav">Encomendas</a>
+    <a href="informacoes.html" class="btn-nav">Informações</a>
   </nav>
 
   <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
@@ -173,13 +204,12 @@
     <a href="index.html" class="btn-nav">Menu</a>
     <a href="encomendas.html" class="btn-nav">Encomendas</a>
     <a href="informacoes.html" class="btn-nav">Informações</a>
-    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
   </nav>
 
   <!-- MAIN CONTENT -->
   <main class="content">
     <section class="chef-section">
-      <h2>👨‍🍳 O Nosso Chef</h2>
+      <h2>O Nosso Chef</h2>
       <img src="imagens/chef-huseyin.jpg" alt="Chef Huseyin" class="chef-img">
     </section>
   </main>
@@ -187,13 +217,16 @@
   <!-- FOOTER -->
   <footer>
     <div class="footer-line">
-      <img src="imagens/chef-turco.jpg" alt="Logo Chef Turco">
-      <img src="imagens/hala-halal.jpg" alt="Certificação Halal">
-      <p><strong>Turkish food Luanda Kilamba Quarteirão W 17</strong></p>
+      
+      <strong>📍 Turkish Food – Luanda, Kilamba Quarteirão W 17</strong>
       <p>📞 +244 925918462 | +244 925918468 | +244 930877600</p>
+	  
     </div>
     <p class="slogan">“O verdadeiro sabor turco em Angola”</p>
   </footer>
+
+  <!-- BOTÃO WHATSAPP FLUTUANTE -->
+  <a href="https://wa.me/244925918468" class="whatsapp-float">💬</a>
 
   <!-- SCRIPT -->
   <script>
