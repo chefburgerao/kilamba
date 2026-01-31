@@ -5,6 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chef Burger – Menu</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* BOTÃO MENU MOBILE */
+    .btn-menu-mobile {
+      display: none;
+      background: var(--blue);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.6rem 1rem;
+      border: none;
+      border-radius: 8px;
+      margin: 90px auto 0;
+      width: 90%;
+      text-align: center;
+    }
+
+    /* MENU RECOLHÍVEL */
+    .menu-mobile {
+      display: none;
+      flex-direction: column;
+      gap: 0.4rem;
+      padding: 0.6rem;
+      background: var(--bg);
+      border-bottom: 1px solid #eee;
+    }
+
+    .menu-mobile select,
+    .menu-mobile .btn-nav {
+      width: 100%;
+      font-size: 0.85rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      .barra-navegacao { display: none; }
+      .btn-menu-mobile { display: block; }
+    }
+  </style>
 </head>
 <body>
 
@@ -15,10 +54,39 @@
         <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
       </a>
     </div>
-    <!-- Botão WhatsApp removido do header em mobile -->
   </header>
 
-  <!-- BARRA DE NAVEGAÇÃO -->
+  <!-- BOTÃO MENU MOBILE -->
+  <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
+
+  <!-- MENU RECOLHÍVEL MOBILE -->
+  <nav class="menu-mobile" id="menuMobile">
+    <select id="filtro-categoria" onchange="filtrarCategoria()">
+      <option value="todos">Todos</option>
+      <option value="hamburguer">Hamburgueres</option>
+      <option value="espaguete">Espaguetes</option>
+      <option value="fahita">Fahitas</option>
+      <option value="frango">Frangos</option>
+      <option value="grelhados">Grelhados</option>
+      <option value="kafta">Kafta</option>
+      <option value="meze">Meze</option>
+      <option value="pizza">Pizzas</option>
+      <option value="frias">Bebidas Frias</option>
+      <option value="sobremesas">Sobremesas</option>
+      <option value="bebidas-quentes">Bebidas Quentes</option>
+      <option value="sumos">Sumos Naturais</option>
+      <option value="matabicho">Matabicho</option>
+      <option value="doses">Doses</option>
+      <option value="sopas">Sopas</option>
+    </select>
+
+    <a href="index.html" class="btn-nav">🔵 Menu</a>
+    <a href="informacoes.html" class="btn-nav">🔵 Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+    <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
+  </nav>
+
+  <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
   <nav class="barra-navegacao">
     <select id="filtro-categoria" onchange="filtrarCategoria()">
       <option value="todos">Todos</option>
@@ -44,6 +112,7 @@
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
     <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
   </nav>
+
 
 
 
@@ -807,7 +876,7 @@
   <div class="sugestao" id="sug608"></div>
 </div>
   </main>
-<!-- FOOTER -->
+ <!-- FOOTER -->
   <footer>
     <div class="footer-content">
       © 2026 Chef Burger AO – Todos os direitos reservados
@@ -816,5 +885,11 @@
 
   <!-- SCRIPT -->
   <script src="script.js"></script>
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuMobile");
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    }
+  </script>
 </body>
 </html>
