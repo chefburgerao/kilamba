@@ -4,7 +4,6 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chef Burger – Menu</title>
-  <!-- CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,9 +15,7 @@
         <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
       </a>
     </div>
-    <button onclick="window.open('https://wa.me/244925918468','_blank')" class="btn-nav whatsapp">
-      <img src="imagens/whatsapp-logo.jpg" alt="WhatsApp"> Fale no WhatsApp
-    </button>
+    <!-- Botão WhatsApp removido do header em mobile -->
   </header>
 
   <!-- BARRA DE NAVEGAÇÃO -->
@@ -42,10 +39,12 @@
       <option value="sopas">Sopas</option>
     </select>
 
-    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
-    <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
+    <a href="index.html" class="btn-nav">🔵 Menu</a>
+    <a href="informacoes.html" class="btn-nav">🔵 Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
     <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
   </nav>
+
 
 
 
@@ -808,7 +807,7 @@
   <div class="sugestao" id="sug608"></div>
 </div>
   </main>
- <!-- FOOTER -->
+<!-- FOOTER -->
   <footer>
     <div class="footer-content">
       © 2026 Chef Burger AO – Todos os direitos reservados
