@@ -1,20 +1,17 @@
-// Função para alternar o menu mobile
+// Alterna menu mobile
 function toggleMenu() {
   const menu = document.getElementById("menuMobile");
-  if (menu.style.display === "flex") {
-    menu.style.display = "none";
-  } else {
-    menu.style.display = "flex";
-  }
+  menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
 }
 
-// Exemplo de função de filtro (mantida)
+// Filtrar produtos por categoria usando data-categoria
 function filtrarCategoria() {
   const filtro = document.getElementById("filtro-categoria").value;
   const produtos = document.querySelectorAll(".product");
 
   produtos.forEach(produto => {
-    if (filtro === "todos" || produto.classList.contains(filtro)) {
+    const categoria = produto.getAttribute("data-categoria");
+    if (filtro === "todos" || categoria === filtro) {
       produto.style.display = "flex";
     } else {
       produto.style.display = "none";
@@ -28,10 +25,45 @@ function resetarFiltro() {
   filtrarCategoria();
 }
 
-// Botão adicionar ao carrinho com feedback visual
-document.querySelectorAll(".btn-add").forEach(btn => {
-  btn.addEventListener("click", () => {
-    btn.classList.add("clicked");
-    setTimeout(() => btn.classList.remove("clicked"), 600);
+// Carrinho em memória
+let carrinho = [];
+
+// Adicionar item ao carrinho com sugestão
+function adicionarItem(id, nome, preco, sugestaoId) {
+  // Adiciona ao carrinho
+  carrinho.push({ id, nome, preco });
+
+  // Atualiza total
+  atualizarTotal();
+
+  // Mostrar sugestão associada
+  const sugestao = document.getElementById(sugestaoId);
+  if (sugestao) {
+    sugestao.style.display = "block";
+    sugestao.innerText = `🍴 O Chef Huseyin recomenda um acompanhamento premium para ${nome}.`;
+  }
+}
+
+// Atualizar total do carrinho
+function atualizarTotal() {
+  let total = 0;
+  carrinho.forEach(item => {
+    total += item.preco;
   });
-});
+
+  const totalElement = document.getElementById("totalCarrinho");
+  if (totalElement) {
+    totalElement.innerText = `Total: ${formatarPreco(total)} KZ`;
+  }
+}
+
+// Função utilitária para formatar preço em KZ
+function formatarPreco(valor) {
+  return valor.toLocaleString("pt-AO", { minimumFractionDigits: 2 });
+}
+
+// Remover item do carrinho
+function removerItem(id) {
+  carrinho = carrinho.filter(item => item.id !== id);
+  atualizarTotal();
+}
