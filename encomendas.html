@@ -4,82 +4,81 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chef Burger – Encomendas</title>
-  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --primary:#000; --blue:#007BFF; --green:#25D366; --bg:#fff8f8; --text:#222; --card:#fff;
+    }
+    body { margin:0; font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
+    header { position:fixed; top:0; width:100%; height:80px; background:var(--primary); color:#fff;
+             display:flex; justify-content:center; align-items:center; z-index:1000; }
+    .logo img { height:65px; }
+
+    /* Menu mobile */
+    .btn-menu-mobile { display:none; background:var(--blue); color:#fff; font-weight:bold;
+                       padding:0.6rem 1rem; border:none; border-radius:8px; margin:90px auto 0;
+                       width:90%; text-align:center; }
+    .menu-mobile { display:none; flex-direction:column; gap:0.4rem; padding:0.6rem; background:var(--bg);
+                   border-bottom:1px solid #eee; }
+    .menu-mobile .btn-nav { width:100%; font-size:0.85rem; padding:0.6rem 0.8rem; border-radius:8px; text-align:center; }
+
+    /* Barra desktop */
+    .barra-navegacao { position:fixed; top:80px; width:100%; background:var(--bg); border-bottom:1px solid #eee;
+                       padding:0.8rem; display:flex; justify-content:center; gap:0.5rem; z-index:999; }
+    .btn-nav { background:var(--blue); color:#fff; padding:0.5rem 1rem; border-radius:8px; font-weight:bold; border:none; cursor:pointer; }
+    .btn-nav.whatsapp { background:var(--green); }
+
+    main.content { margin-top:150px; margin-bottom:40px; padding:1rem; }
+    .product { background:var(--card); border:1px solid #eee; border-radius:12px; padding:1rem; margin-bottom:1rem; }
+    .price { font-weight:bold; color:var(--primary); }
+
+    footer { position:fixed; bottom:0; left:0; width:100%; background:var(--primary); color:#fff;
+             text-align:center; font-size:0.85rem; padding:0.3rem; }
+
+    @media(max-width:768px){
+      .barra-navegacao{display:none;}
+      .btn-menu-mobile{display:block;}
+    }
+  </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header>
-    <div class="logo">
-      <a href="index.html">
-        <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
-      </a>
-    </div>
+    <div class="logo"><a href="index.html"><img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO"></a></div>
   </header>
 
-  <!-- BOTÃO MENU MOBILE -->
   <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
-
-  <!-- MENU RECOLHÍVEL MOBILE -->
   <nav class="menu-mobile" id="menuMobile">
     <a href="index.html" class="btn-nav">🔵 Menu</a>
     <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
   </nav>
 
-  <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
   <nav class="barra-navegacao">
     <a href="index.html" class="btn-nav">🔵 Menu</a>
     <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
   </nav>
 
-  <!-- MAIN CONTENT -->
   <main class="content">
     <h1>🛒 Itens da sua encomenda</h1>
-
+    <!-- Exemplo de itens -->
     <div class="product">
       <h3>Chef Burger</h3>
-      <div>
-        <button>-</button> 1 <button>+</button>
-        <button>Remover</button>
-      </div>
       <p class="price">8.500,00 KZ</p>
     </div>
-
     <div class="product">
       <h3>Espaguete Bolonhesa</h3>
-      <div>
-        <button>-</button> 2 <button>+</button>
-        <button>Remover</button>
-      </div>
       <p class="price">28.000,00 KZ</p>
     </div>
-
     <h2>Total: 36.500,00 KZ</h2>
     <button class="btn-add">✅ Finalizar Encomenda</button>
-
-    <div class="sugestao">
-      🍔 O Chef Huseyin indica molho barbecue especial para realçar o sabor do Chef Burger.
-    </div>
-    <div class="sugestao">
-      ✨ O Chef Huseyin recomenda uma sobremesa premium para completar a sua refeição.
-    </div>
   </main>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-content">
-      © 2026 Chef Burger AO – Todos os direitos reservados
-    </div>
-  </footer>
+  <footer>© 2026 Chef Burger AO – Todos os direitos reservados</footer>
 
-  <!-- SCRIPT -->
-  <script src="script.js"></script>
   <script>
-    function toggleMenu() {
-      const menu = document.getElementById("menuMobile");
-      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    function toggleMenu(){
+      const menu=document.getElementById("menuMobile");
+      menu.style.display=(menu.style.display==="flex")?"none":"flex";
     }
   </script>
 </body>
