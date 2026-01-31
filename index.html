@@ -8,22 +8,21 @@
   <style>
     /* BOTÃO MENU MOBILE DENTRO DO HEADER */
     .btn-menu-mobile {
-  display: none;
-  position: absolute;
-  bottom: 5px;          /* canto inferior do header */
-  right: 2cm;           /* movido 2 cm para a direita */
-  background: var(--blue);
-  color: #fff;
-  font-weight: bold;
-  padding: 0.5rem 1rem;
-  border: none;
-  border-radius: 8px;
-  text-align: center;
-  z-index: 1001;
-}
+      display: none;
+      position: absolute;
+      bottom: 5px;          /* canto inferior do header */
+      right: 2cm;           /* deslocado 2cm da borda direita */
+      background: var(--blue);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      z-index: 1001;
+    }
 
-
-    /* MENU RECOLHÍVEL */
+    /* MENU RECOLHÍVEL MOBILE */
     .menu-mobile {
       display: none;
       flex-direction: column;
@@ -31,7 +30,14 @@
       padding: 0.6rem;
       background: var(--bg);
       border-bottom: 1px solid #eee;
+      position: fixed;
+      top: 130px;             /* aparece logo abaixo do header */
+      left: 50%;
+      transform: translateX(-50%);
+      width: 95%;
+      z-index: 2000;          /* garante que fica acima do conteúdo */
     }
+
     .menu-mobile select,
     .menu-mobile .btn-nav {
       width: 100%;
@@ -80,8 +86,8 @@
       <option value="doses">Doses</option>
       <option value="sopas">Sopas</option>
     </select>
-    <button onclick="resetarFiltro()" class="btn-nav limpar">Limpar Filtro</button>
-    <a href="encomendas.html" class="btn-nav">Encomendas</a>
+    <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Limpar Filtro</button>
+    <a href="index.html" class="btn-nav">Menu</a>
     <a href="informacoes.html" class="btn-nav">Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
   </nav>
@@ -899,6 +905,7 @@
   </script>
 </body>
 </html>
+
 
 
 
