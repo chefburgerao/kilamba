@@ -10,7 +10,7 @@
     .btn-menu-mobile {
   display: none;
   position: fixed;
-  top: 85px;              /* logo abaixo do header */
+  top: 85px;              /* logo abaixo do header de 80px */
   left: 50%;
   transform: translateX(-50%);
   background: var(--blue);
@@ -21,9 +21,8 @@
   border-radius: 8px;
   width: 90%;
   text-align: center;
-  z-index: 1001;
+  z-index: 1001;          /* garante que fica acima do conteúdo */
 }
-
 
     /* MENU RECOLHÍVEL */
     .menu-mobile {
@@ -85,7 +84,7 @@
       <option value="sopas">Sopas</option>
     </select>
     <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Limpar Filtro</button>
-    
+    <a href="index.html" class="btn-nav">Menu</a>
     <a href="informacoes.html" class="btn-nav">Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
   </nav>
@@ -902,5 +901,3 @@
   </script>
 </body>
 </html>
-
-
