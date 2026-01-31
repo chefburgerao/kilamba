@@ -4,82 +4,248 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Chef Burger – Encomendas</title>
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --primary:#000; --blue:#007BFF; --green:#25D366; --bg:#fff8f8; --text:#222; --card:#fff;
+    .carrinho-container {
+      margin-top: 120px;
+      padding: 1rem;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      display: flex;
+      flex-direction: column;
+      height: 70vh;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fff;
     }
-    body { margin:0; font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
-    header { position:fixed; top:0; width:100%; height:80px; background:var(--primary); color:#fff;
-             display:flex; justify-content:center; align-items:center; z-index:1000; }
-    .logo img { height:65px; }
-
-    /* Menu mobile */
-    .btn-menu-mobile { display:none; background:var(--blue); color:#fff; font-weight:bold;
-                       padding:0.6rem 1rem; border:none; border-radius:8px; margin:90px auto 0;
-                       width:90%; text-align:center; }
-    .menu-mobile { display:none; flex-direction:column; gap:0.4rem; padding:0.6rem; background:var(--bg);
-                   border-bottom:1px solid #eee; }
-    .menu-mobile .btn-nav { width:100%; font-size:0.85rem; padding:0.6rem 0.8rem; border-radius:8px; text-align:center; }
-
-    /* Barra desktop */
-    .barra-navegacao { position:fixed; top:80px; width:100%; background:var(--bg); border-bottom:1px solid #eee;
-                       padding:0.8rem; display:flex; justify-content:center; gap:0.5rem; z-index:999; }
-    .btn-nav { background:var(--blue); color:#fff; padding:0.5rem 1rem; border-radius:8px; font-weight:bold; border:none; cursor:pointer; }
-    .btn-nav.whatsapp { background:var(--green); }
-
-    main.content { margin-top:150px; margin-bottom:40px; padding:1rem; }
-    .product { background:var(--card); border:1px solid #eee; border-radius:12px; padding:1rem; margin-bottom:1rem; }
-    .price { font-weight:bold; color:var(--primary); }
-
-    footer { position:fixed; bottom:0; left:0; width:100%; background:var(--primary); color:#fff;
-             text-align:center; font-size:0.85rem; padding:0.3rem; }
-
-    @media(max-width:768px){
-      .barra-navegacao{display:none;}
-      .btn-menu-mobile{display:block;}
+    .carrinho-container h2 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .carrinho-scroll {
+      flex: 1;
+      overflow-y: auto;
+      margin-bottom: 1rem;
+    }
+    table#tabelaCarrinho {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    table#tabelaCarrinho th, table#tabelaCarrinho td {
+      padding: 0.6rem;
+      border-bottom: 1px solid #eee;
+    }
+    table#tabelaCarrinho th {
+      background: #007bff;
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+    }
+    table#tabelaCarrinho td {
+      text-align: left;
+      vertical-align: middle;
+    }
+    .quantidade-controle {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      justify-content: flex-start;
+    }
+    .btn-quantidade {
+      background: #007bff;
+      color: #fff;
+      border: none;
+      padding: 0.3rem 0.6rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .btn-remover {
+      background: #ff4444;
+      color: #fff;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .carrinho-footer {
+      border-top: 1px solid #ddd;
+      padding-top: 0.8rem;
+      margin-bottom: 1.5rem; /* separa do footer */
+      text-align: right;
+    }
+    #totalCarrinho {
+      font-weight: bold;
+      font-size: 1.2rem;
+      margin-bottom: 0.8rem;
+    }
+    .btn-finalizar {
+      background: #25D366;
+      color: #fff;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      width: 100%;
+    }
+    footer {
+      margin-top: 2rem;
+      text-align: center;
+      color: #666;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <div class="logo"><a href="index.html"><img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO"></a></div>
+    <div class="logo">
+      <a href="index.html">
+        <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
+      </a>
+    </div>
   </header>
 
+  <!-- NAV MOBILE -->
   <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
   <nav class="menu-mobile" id="menuMobile">
     <a href="index.html" class="btn-nav">🔵 Menu</a>
+    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
     <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
   </nav>
 
+  <!-- NAV DESKTOP -->
   <nav class="barra-navegacao">
-    <a href="index.html" class="btn-nav">🔵 Menu</a>
-    <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
-    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+    <a href="index.html" class="btn-nav">Menu</a>
+    <a href="encomendas.html" class="btn-nav">Encomendas</a>
+    <a href="informacoes.html" class="btn-nav">Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
   </nav>
 
-  <main class="content">
-    <h1>🛒 Itens da sua encomenda</h1>
-    <!-- Exemplo de itens -->
-    <div class="product">
-      <h3>Chef Burger</h3>
-      <p class="price">8.500,00 KZ</p>
+  <!-- CARRINHO -->
+  <div class="carrinho-container">
+    <h2>🛒 Carrinho de Encomendas</h2>
+    <div class="carrinho-scroll">
+      <table id="tabelaCarrinho">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody id="listaCarrinho"></tbody>
+      </table>
     </div>
-    <div class="product">
-      <h3>Espaguete Bolonhesa</h3>
-      <p class="price">28.000,00 KZ</p>
+    <div class="carrinho-footer">
+      <div id="totalCarrinho">Total: 0,00 KZ</div>
+      <button class="btn-finalizar" onclick="finalizarEncomenda()">✅ Finalizar Encomenda</button>
     </div>
-    <h2>Total: 36.500,00 KZ</h2>
-    <button class="btn-add">✅ Finalizar Encomenda</button>
-  </main>
+  </div>
 
-  <footer>© 2026 Chef Burger AO – Todos os direitos reservados</footer>
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">© 2026 Chef Burger AO – Todos os direitos reservados</div>
+  </footer>
 
+  <!-- SCRIPT -->
   <script>
-    function toggleMenu(){
-      const menu=document.getElementById("menuMobile");
-      menu.style.display=(menu.style.display==="flex")?"none":"flex";
+    function toggleMenu() {
+      const menu = document.getElementById("menuMobile");
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
     }
+
+    let carrinho = JSON.parse(localStorage.getItem("carrinhoChefBurger")) || [];
+
+    function mostrarCarrinho() {
+      const lista = document.getElementById("listaCarrinho");
+      lista.innerHTML = "";
+      carrinho.forEach((item, index) => {
+        if (!item.quantidade) item.quantidade = 1;
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${item.nome}</td>
+          <td>${formatarPreco(item.preco)} KZ</td>
+          <td>
+            <div class="quantidade-controle">
+              <button class="btn-quantidade" onclick="alterarQuantidade(${index}, -1)">➖</button>
+              <span>${item.quantidade}</span>
+              <button class="btn-quantidade" onclick="alterarQuantidade(${index}, 1)">➕</button>
+            </div>
+          </td>
+          <td><button class="btn-remover" onclick="removerItem(${index})">Remover</button></td>
+        `;
+        lista.appendChild(tr);
+      });
+      atualizarTotal();
+    }
+
+    function atualizarTotal() {
+      let total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+      document.getElementById("totalCarrinho").innerText = `Total: ${formatarPreco(total)} KZ`;
+    }
+
+    function alterarQuantidade(index, delta) {
+      carrinho[index].quantidade += delta;
+      if (carrinho[index].quantidade < 1) carrinho[index].quantidade = 1;
+      localStorage.setItem("carrinhoChefBurger", JSON.stringify(carrinho));
+      mostrarCarrinho();
+    }
+
+    function removerItem(index) {
+      carrinho.splice(index, 1);
+      localStorage.setItem("carrinhoChefBurger", JSON.stringify(carrinho));
+      mostrarCarrinho();
+    }
+
+    function formatarPreco(valor) {
+      return valor.toLocaleString("pt-AO", { minimumFractionDigits: 2 });
+    }
+
+    function finalizarEncomenda() {
+      if (carrinho.length === 0) {
+        alert("O carrinho está vazio!");
+        return;
+      }
+
+      // 6 saudações institucionais neutras
+      const saudacoes = [
+        "👋 Olá Chef Burger, esta é a minha encomenda:%0A",
+        "📦 Olá Chef Burger, segue o meu pedido:%0A",
+        "🍔 Olá Chef Burger, confirmo esta encomenda:%0A",
+        "📝 Olá Chef Burger, envio a minha lista:%0A",
+        "✅ Olá Chef Burger, registando a minha encomenda:%0A",
+        "🔔 Olá Chef Burger, envio agora o meu pedido:%0A"
+      ];
+      const saudacao = saudacoes[Math.floor(Math.random() * saudacoes.length)];
+
+      let mensagem = saudacao + "%0A"; // saudação em uma linha
+
+            carrinho.forEach(item => {
+        mensagem += `- ${item.nome} x${item.quantidade} → ${formatarPreco(item.preco * item.quantidade)} KZ%0A`;
+      });
+
+      let total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
+      mensagem += `%0A💰 Total: ${formatarPreco(total)} KZ`;
+
+      // Abrir WhatsApp para restaurante
+      window.open(`https://wa.me/244925918468?text=${mensagem}`, "_blank");
+
+      // Zerar carrinho e voltar ao index
+      carrinho = [];
+      localStorage.removeItem("carrinhoChefBurger");
+      window.location.href = "index.html";
+    }
+
+    mostrarCarrinho();
   </script>
 </body>
 </html>
