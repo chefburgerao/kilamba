@@ -8,17 +8,21 @@
   <style>
     /* BOTÃO MENU MOBILE */
     .btn-menu-mobile {
-      display: none;
-      background: var(--blue);
-      color: #fff;
-      font-weight: bold;
-      padding: 0.6rem 1rem;
-      border: none;
-      border-radius: 8px;
-      margin: 90px auto 0;
-      width: 90%;
-      text-align: center;
-    }
+  display: none;
+  position: fixed;
+  top: 85px;              /* logo abaixo do header de 80px */
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue);
+  color: #fff;
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border: none;
+  border-radius: 8px;
+  width: 90%;
+  text-align: center;
+  z-index: 1001;          /* garante que fica acima do conteúdo */
+}
 
     /* MENU RECOLHÍVEL */
     .menu-mobile {
@@ -79,12 +83,12 @@
       <option value="doses">Doses</option>
       <option value="sopas">Sopas</option>
     </select>
-	<button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Limpar Filtro</button>
+    <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Limpar Filtro</button>
     <a href="index.html" class="btn-nav">Menu</a>
     <a href="informacoes.html" class="btn-nav">Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
-    
   </nav>
+
 
   <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
   <nav class="barra-navegacao">
