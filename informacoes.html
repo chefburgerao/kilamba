@@ -3,179 +3,75 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chef BurgerAO – Informações</title>
+  <title>Chef Burger – Informações</title>
   <style>
-    :root {
-      --primary: #000;
-      --blue: #007BFF;
-      --green: #25D366;
-      --bg: #fff8f8;
-      --text: #222;
-    }
+    :root { --primary:#000; --blue:#007BFF; --green:#25D366; --bg:#fff8f8; --text:#222; }
 
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    body { margin:0; font-family:'Segoe UI',system-ui,sans-serif; background:var(--bg); color:var(--text); }
 
     /* HEADER */
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      height: 80px;
-      background: var(--primary);
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      padding: 0.4rem 1rem;
-      z-index: 1000;
-    }
-    .logo img { height: 65px; }
+    header { position:fixed; top:0; width:100%; height:80px; background:var(--primary); color:#fff;
+             display:flex; justify-content:center; align-items:center; z-index:1000; }
+    .logo img{height:65px;}
 
-    header .btn-nav.whatsapp {
-      position: absolute;
-      bottom: 5px;
-      right: 2cm;
-      background: var(--green);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.4rem 0.8rem;
-      border-radius: 8px;
-      font-weight: bold;
-      cursor: pointer;
-      color: #fff;
-    }
-    header .btn-nav.whatsapp img {
-      height: 18px;
-      margin-right: 6px;
-    }
+    /* MENU MOBILE */
+    .btn-menu-mobile{display:none; background:var(--blue); color:#fff; font-weight:bold; padding:0.6rem 1rem;
+                     border:none; border-radius:8px; margin:90px auto 0; width:90%; text-align:center;}
+    .menu-mobile{display:none; flex-direction:column; gap:0.4rem; padding:0.6rem; background:var(--bg); border-bottom:1px solid #eee;}
+    .menu-mobile .btn-nav{width:100%; font-size:0.85rem; padding:0.6rem 0.8rem; border-radius:8px; text-align:center;}
 
-    /* BARRA DE NAVEGAÇÃO */
-    .barra-navegacao {
-      position: fixed;
-      top: 80px;
-      width: 100%;
-      background: var(--bg);
-      border-bottom: 1px solid #eee;
-      padding: 0.8rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      z-index: 999;
-    }
-    .btn-nav {
-      padding: 0.5rem 1rem;
-      border-radius: 8px;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-      min-width: 120px;
-      text-align: center;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      background: var(--blue);
-      color: #fff;
-    }
+    /* BARRA DESKTOP */
+    .barra-navegacao{position:fixed; top:80px; width:100%; background:var(--bg); border-bottom:1px solid #eee;
+                     padding:0.8rem; display:flex; justify-content:center; gap:0.5rem; z-index:999;}
+    .btn-nav{background:var(--blue); color:#fff; padding:0.5rem 1rem; border-radius:8px; font-weight:bold; border:none; cursor:pointer;}
+    .btn-nav.whatsapp{background:var(--green);}
 
-    /* MAIN CONTENT */
-    main.content {
-      margin-top: 150px;
-      margin-bottom: 60px; /* folga mínima com footer */
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+    /* MAIN */
+    main.content{margin-top:150px; margin-bottom:40px; padding:1rem; text-align:center;}
+    h1,h2{color:var(--primary);}
+    .chef-img{width:100%; max-width:900px; height:auto; border-radius:12px; margin-top:1rem; object-fit:contain;}
 
-    h1, h2 {
-      color: var(--primary);
-      margin-bottom: 1rem;
-    }
+    /* FOOTER */
+    footer{position:fixed; bottom:0; left:0; width:100%; background:var(--primary); color:#fff; text-align:center; font-size:0.85rem; padding:0.3rem;}
+    .footer-line{display:flex; justify-content:center; align-items:center; gap:6px;}
+    .footer-line img{height:30px;}
+    .slogan{font-style:italic;}
 
-    .chef-img {
-      width: 100%;
-      max-width: 900px;   /* limite em desktop */
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      margin: 1rem auto;
-      display: block;
-      object-fit: contain; /* garante que não corta */
-    }
-
-    /* FOOTER REDUZIDO */
-    footer {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: var(--primary);
-      color: #fff;
-      font-size: 0.75rem;
-      z-index: 1000;
-      padding: 0.3rem 0.5rem;
-    }
-    .footer-content {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      gap: 0.2rem;
-    }
-    .footer-line {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-    }
-    .footer-line img {
-      height: 30px;
-    }
-    .footer-line p {
-      margin: 0;
-    }
-    .slogan {
-      font-style: italic;
-      margin: 0;
+    /* MOBILE */
+    @media(max-width:768px){
+      .barra-navegacao{display:none;}
+      .btn-menu-mobile{display:block;}
     }
   </style>
 </head>
 <body>
-
   <!-- HEADER -->
   <header>
-    <div class="logo">
-      <a href="index.html">
-        <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
-      </a>
-    </div>
-    <button onclick="window.open('https://wa.me/244925918462','_blank')" class="btn-nav whatsapp">
-      <img src="imagens/whatsapp-logo.jpg" alt="WhatsApp"> Fale no WhatsApp
-    </button>
+    <div class="logo"><a href="index.html"><img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO"></a></div>
   </header>
 
-  <!-- BARRA DE NAVEGAÇÃO -->
+  <!-- BOTÃO MENU MOBILE -->
+  <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
+
+  <!-- MENU RECOLHÍVEL MOBILE -->
+  <nav class="menu-mobile" id="menuMobile">
+    <a href="index.html" class="btn-nav">🍽 Menu</a>
+    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
+    <a href="https://wa.me/244925918462" class="btn-nav whatsapp">🟢 WhatsApp</a>
+  </nav>
+
+  <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
   <nav class="barra-navegacao">
     <a href="index.html" class="btn-nav">🍽 Menu</a>
-    <a href="encomendas.html" class="btn-nav">Encomenda</a>
+    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
+    <a href="https://wa.me/244925918462" class="btn-nav whatsapp">🟢 WhatsApp</a>
   </nav>
 
   <!-- MAIN CONTENT -->
   <main class="content">
-    
+    <h1>ℹ️ Informações do Restaurante</h1>
+    <p><strong>Turkish food Luanda Kilamba Quarteirão W 17</strong></p>
+
     <section class="chef-section">
       <h2>👨‍🍳 O Nosso Chef</h2>
       <img src="imagens/chef-huseyin.jpg" alt="Chef Huseyin" class="chef-img">
@@ -188,13 +84,18 @@
       <div class="footer-line">
         <img src="imagens/chef-turco.jpg" alt="Logo Chef Turco">
         <img src="imagens/hala-halal.jpg" alt="Certificação Halal">
-		<p><strong>Turkish food Luanda Kilamba Quarteirão W 17</strong></p>
         <p>📞 +244 925918462 | +244 925918468 | +244 930877600</p>
-		
       </div>
       <p class="slogan">“O verdadeiro sabor turco em Angola”</p>
     </div>
   </footer>
 
+  <!-- SCRIPT -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("menuMobile");
+      menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
+    }
+  </script>
 </body>
 </html>
