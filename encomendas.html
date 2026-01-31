@@ -112,12 +112,11 @@
   </header>
 
   <!-- NAV MOBILE -->
-  <button class="btn-menu-mobile" onclick="toggleMenu()">🔵 Menu</button>
+  <button class="btn-menu-mobile" onclick="toggleMenu()">Explorar</button>
   <nav class="menu-mobile" id="menuMobile">
-    <a href="index.html" class="btn-nav">🔵 Menu</a>
-    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
-    <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
-    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">🟢 WhatsApp</a>
+    <a href="encomendas.html" class="btn-nav">Encomendas</a>
+    <a href="informacoes.html" class="btn-nav">Informações</a>
+    <a href="https://wa.me/244925918468" class="btn-nav whatsapp">WhatsApp</a>
   </nav>
 
   <!-- NAV DESKTOP -->
@@ -218,12 +217,12 @@
 
       // 6 saudações institucionais neutras
       const saudacoes = [
-        "👋 Olá Chef Burger, esta é a minha encomenda:%0A",
-        "📦 Olá Chef Burger, segue o meu pedido:%0A",
-        "🍔 Olá Chef Burger, confirmo esta encomenda:%0A",
-        "📝 Olá Chef Burger, envio a minha lista:%0A",
-        "✅ Olá Chef Burger, registando a minha encomenda:%0A",
-        "🔔 Olá Chef Burger, envio agora o meu pedido:%0A"
+        "Olá Chef Burger, esta é a minha encomenda:%0A",
+        "Olá Chef Burger, segue o meu pedido:%0A",
+        "Olá Chef Burger, confirmo esta encomenda:%0A",
+        "Olá Chef Burger, envio a minha lista:%0A",
+        "Olá Chef Burger, registando a minha encomenda:%0A",
+        "Olá Chef Burger, envio agora o meu pedido:%0A"
       ];
       const saudacao = saudacoes[Math.floor(Math.random() * saudacoes.length)];
 
@@ -234,7 +233,7 @@
       });
 
       let total = carrinho.reduce((acc, item) => acc + (item.preco * item.quantidade), 0);
-      mensagem += `%0A💰 Total: ${formatarPreco(total)} KZ`;
+      mensagem += `%0ATotal: ${formatarPreco(total)} KZ`;
 
       // Abrir WhatsApp para restaurante
       window.open(`https://wa.me/244925918468?text=${mensagem}`, "_blank");
