@@ -3,255 +3,58 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Chef Burger – Restaurante & Pizzaria</title>
-  <link rel="icon" type="image/jpeg" href="imagens/logo-chefburger.jpg">
-
-  <style>
-:root {
-  --primary: #000;       /* preto */
-  --accent: #FFD700;     /* dourado */
-  --bg: #fff8f8;
-  --text: #222;
-  --card: #fff;
-}
-
-body {
-  font-family: 'Segoe UI', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  margin: 0;
-}
-
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 107px;
-  background: var(--primary);
-  color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6rem 1rem;
-  z-index: 1000;
-}
-
-.logo img {
-  height: 90px;
-  display: block;
-  margin: 0 auto;
-}
-
-/* Controles Desktop */
-.desktop-controls {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-/* Controles Mobile */
-.mobile-controls {
-  position: absolute;
-  right: 1rem;
-  top: 50%;
-  transform: translateY(-50%);
-  display: none;
-  gap: 0.5rem;
-  align-items: center;
-}
-
-/* Botão Informações */
-.btn-info {
-  background: #007BFF;
-  color: #fff;
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Responsividade */
-@media (max-width: 768px) {
-  .desktop-controls { display: none; }
-  .mobile-controls { display: flex; }
-}
-
-/* MAIN CONTENT */
-main.content {
-  margin-top: 107px;
-  margin-right: 320px;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1rem;
-}
-
-.product {
-  background: var(--card);
-  border: 1px solid #eee;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-  padding: 0.9rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.product h3 { margin: 0.4rem 0; font-size: 1rem; color: var(--primary); }
-.price { font-weight: bold; color: var(--primary); font-size: 1.05rem; }
-
-/* Botão Adicionar */
-.btn-add {
-  background-color: #ff6600;
-  color: #fff;
-  padding: 14px 22px;
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  margin-top: 10px;
-}
-.btn-add.clicked {
-  background-color: #28a745;
-  transform: scale(1.05);
-}
-
-/* CARRINHO DESKTOP */
-#carrinho {
-  position: fixed;
-  top: 107px;
-  right: 0;
-  width: 320px;
-  height: calc(100vh - 107px);
-  background: #fff;
-  border-left: 2px solid #eee;
-  box-shadow: -4px 0 12px rgba(0,0,0,0.06);
-  display: flex;
-  flex-direction: column;
-  z-index: 999;
-}
-
-#cart-scroll { flex: 1; overflow-y: auto; padding: 1rem; }
-#cart-footer { padding: 1rem; border-top: 1px solid #eee; background: #fff; }
-
-.btn-finalizar {
-  width: 100%;
-  background: var(--primary);
-  color: #fff;
-  font-weight: bold;
-  border: none;
-  padding: 1rem;
-  border-radius: 12px;
-  cursor: pointer;
-  margin-bottom: 0.5rem;
-}
-
-#btnFecharCarrinho {
-  width: 100%;
-  background: #222;
-  color: #fff;
-  border: none;
-  padding: 0.8rem;
-  border-radius: 8px;
-  cursor: pointer;
-}
-
-.cart-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid #eee;
-}
-
-.item-name { flex: 2; font-size: 0.95rem; }
-.item-controls { flex: 1; display: flex; justify-content: center; gap: 0.3rem; }
-.item-price { flex: 1; text-align: right; font-weight: bold; color: var(--primary); font-size: 1rem; }
-.remove { background: none; border: none; color: red; font-size: 1rem; cursor: pointer; }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  main.content { margin-right: 0; }
-
-  #carrinho {
-    display: none;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    left: 0;
-    border-left: none;
-    box-shadow: none;
-    z-index: 2000;
-  }
-  #carrinho.active { display: flex; }
-}
-	
-  </style>
+  <title>Chef Burger – Menu</title>
+  <!-- CSS externo -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-<header>
-  <!-- Logo central -->
-  <div class="logo">
-    <a href="index.html">
-      <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
-    </a>
-  </div>
 
-  <!-- Controles Desktop -->
-  <div class="desktop-controls">
-    <select id="filtroCategoria" onchange="filtrarCategoria(this.value)">
-      <option value="">Todas as Categorias</option>
-      <option value="meze">Meze</option>
-      <option value="fahita">Fahitas</option>
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
+      </a>
+    </div>
+    <button onclick="window.open('https://wa.me/244925918468','_blank')" class="btn-nav whatsapp">
+      <img src="imagens/whatsapp-logo.jpg" alt="WhatsApp"> Fale no WhatsApp
+    </button>
+  </header>
+
+  <!-- BARRA DE NAVEGAÇÃO -->
+  <nav class="barra-navegacao">
+    <select id="filtro-categoria" onchange="filtrarCategoria()">
+      <option value="todos">Todos</option>
       <option value="hamburguer">Hamburgueres</option>
-      <option value="pizza">Pizzas</option>
-      <option value="kofte">Köfte</option>
-      <option value="frias">Bebidas Frias</option>
-      <option value="bebidas-quentes">Bebidas Quentes</option>
-      <option value="sobremesas">Sobremesas</option>
-      <option value="matabicho">Matabicho</option>
-      <option value="sumos">Sumos</option>
-	  <option value="espaguete">Espaguete</option>
-    </select>
-    <button onclick="limparFiltro()">Limpar Filtro</button>
-    <a href="informacoes.html" class="btn-info">ℹ️ Informações</a>
-  </div>
-
-  <!-- Controles Mobile -->
-  <div class="mobile-controls">
-    <select id="filtroCategoriaMobile" onchange="filtrarCategoria(this.value)">
-      <option value="">Todas as Categorias</option>
-      <option value="meze">Meze</option>
+      <option value="espaguete">Espaguetes</option>
       <option value="fahita">Fahitas</option>
-      <option value="hamburguer">Hamburgueres</option>
+      <option value="frango">Frangos</option>
+      <option value="grelhados">Grelhados</option>
+      <option value="kafta">Kafta</option>
+      <option value="meze">Meze</option>
       <option value="pizza">Pizzas</option>
-      <option value="kofte">Köfte</option>
       <option value="frias">Bebidas Frias</option>
-      <option value="bebidas-quentes">Bebidas Quentes</option>
       <option value="sobremesas">Sobremesas</option>
+      <option value="bebidas-quentes">Bebidas Quentes</option>
+      <option value="sumos">Sumos Naturais</option>
       <option value="matabicho">Matabicho</option>
-      <option value="sumos">Sumos</option>
-	  <option value="espaguete">Espaguete</option>
+      <option value="doses">Doses</option>
+      <option value="sopas">Sopas</option>
     </select>
-    <button onclick="limparFiltro()">Limpar Filtro</button>
-    <a href="informacoes.html" class="btn-info">ℹ️ Informações</a>
-  </div>
-</header>
+
+    <a href="encomendas.html" class="btn-nav">📦 Encomendas</a>
+    <a href="informacoes.html" class="btn-nav">ℹ️ Informações</a>
+    <button onclick="resetarFiltro()" class="btn-nav limpar">🔄 Resetar Filtro</button>
+  </nav>
 
 
-<main class="content">
 
-  <!-- Hamburgueres -->
+  <!-- MAIN CONTENT -->
+  <main class="content premium">
+  
+    <!-- Exemplo de produtos -->
+	
+    <!-- Hamburgueres -->
   <div class="product" data-categoria="hamburguer">
     <img src="imagens/abacate-cheeseburger.jpg" alt="Abacate Cheeseburger">
     <h3>Abacate Cheeseburger</h3>
@@ -285,7 +88,7 @@ main.content {
   </div>
 
   <div class="product" data-categoria="hamburguer">
-    <img src="imagens/big-burger.png" alt="Big Burger">
+    <img src="imagens/big-burger.jpg" alt="Big Burger">
     <h3>Big Burger</h3>
     <div class="price" data-preco="10500">10.500,00 KZ</div>
     <button onclick="adicionarItem('p005','Big Burger',10500,'sug005')">Adicionar</button>
@@ -334,18 +137,18 @@ main.content {
   </div>
 
   <div class="product" data-categoria="espaguete">
-    <img src="imagens/espagueta-satum.jpg" alt="Espagueta Satum">
-    <h3>Espagueta Satum</h3>
+    <img src="imagens/espagueta-satum.jpg" alt="Espagueta de Atum">
+    <h3>Espagueta de Atum</h3>
     <div class="price" data-preco="14500">14.500,00 KZ</div>
-    <button onclick="adicionarItem('p011','Espagueta Satum',14500,'sug011')">Adicionar</button>
+    <button onclick="adicionarItem('p011','Espagueta de Atum',14500,'sug011')">Adicionar</button>
     <div class="sugestao" id="sug011"></div>
   </div>
 
   <div class="product" data-categoria="espaguete">
-    <img src="imagens/esparguete-com.jpg" alt="Esparguete Com">
-    <h3>Esparguete Com</h3>
+    <img src="imagens/esparguete-com.jpg" alt="Esparguete Com Camarão">
+    <h3>Esparguete Com Camarão</h3>
     <div class="price" data-preco="15500">15.500,00 KZ</div>
-    <button onclick="adicionarItem('p012','Esparguete Com',15500,'sug012')">Adicionar</button>
+    <button onclick="adicionarItem('p012','Esparguete Com Camarão',15500,'sug012')">Adicionar</button>
     <div class="sugestao" id="sug012"></div>
   </div>
 
@@ -419,8 +222,8 @@ main.content {
   <div class="product" data-categoria="frango">
     <img src="imagens/frango-com-molho.jpg" alt="Frango com Molho">
     <h3>Frango com Molho</h3>
-    <div class="price" data-preco="135000">13.500,00 KZ</div>
-    <button onclick="adicionarItem('p020','Frango com Molho',135000,'sug020')">Adicionar</button>
+    <div class="price" data-preco="13500">13.500,00 KZ</div>
+    <button onclick="adicionarItem('p020','Frango com Molho',13500,'sug020')">Adicionar</button>
     <div class="sugestao" id="sug020"></div>
   </div>
 
@@ -444,8 +247,8 @@ main.content {
   <div class="product" data-categoria="grelhados">
     <img src="imagens/grelhada-bitoque.jpg" alt="Grelhada Bitoque">
     <h3>Grelhada Bitoque</h3>
-    <div class="price" data-preco="145000">14.500,00 KZ</div>
-    <button onclick="adicionarItem('p023','Grelhada Bitoque',145000,'sug023')">Adicionar</button>
+    <div class="price" data-preco="14500">14.500,00 KZ</div>
+    <button onclick="adicionarItem('p023','Grelhada Bitoque',14500,'sug023')">Adicionar</button>
     <div class="sugestao" id="sug023"></div>
   </div>
 
@@ -474,20 +277,20 @@ main.content {
     <div class="sugestao" id="sug026"></div>
   </div>
 
-  <!-- Köfte -->
-  <div class="product" data-categoria="kofte">
-    <img src="imagens/kofte-grelhado.jpg" alt="Kofte Grelhado">
-    <h3>Kofte Grelhado</h3>
+  <!-- Kafta -->
+  <div class="product" data-categoria="Kafta">
+    <img src="imagens/Kafta-grelhado.jpg" alt="Kafta Grelhado">
+    <h3>Kafta Grelhado</h3>
     <div class="price" data-preco="13500">13.500,00 KZ</div>
-    <button onclick="adicionarItem('p027','Kofte Grelhado',13500,'sug027')">Adicionar</button>
+    <button onclick="adicionarItem('p027','Kafta Grelhado',13500,'sug027')">Adicionar</button>
     <div class="sugestao" id="sug027"></div>
   </div>
 
-  <div class="product" data-categoria="kofte">
-    <img src="imagens/kofte.jpg" alt="Kofte">
-    <h3>Kofte</h3>
+  <div class="product" data-categoria="Kafta">
+    <img src="imagens/kafta.jpg" alt="Kafta">
+    <h3>Kafta</h3>
     <div class="price" data-preco="14500">14.500,00 KZ</div>
-    <button onclick="adicionarItem('p028','Kofte',14500,'sug028')">Adicionar</button>
+    <button onclick="adicionarItem('p028','Kafta',14500,'sug028')">Adicionar</button>
     <div class="sugestao" id="sug028"></div>
   </div>
 
@@ -1004,201 +807,15 @@ main.content {
   <button onclick="adicionarItem('p608','Torrada Mista',8000,'sug608')">Adicionar</button>
   <div class="sugestao" id="sug608"></div>
 </div>
+  </main>
+ <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      © 2026 Chef Burger AO – Todos os direitos reservados
+    </div>
+  </footer>
 
-
-</main>
-
-
-<!-- Carrinho -->
-<aside id="carrinho">
-  <h2>Minha Encomenda</h2>
-  <div id="cart-scroll">
-    <div id="cart-items"></div>
-    <div id="cart-total"><strong>Total: 0,00 KZ</strong></div>
-  </div>
-  <div id="cart-footer">
-    <button class="btn-finalizar" onclick="finalizarCompra()">Finalizar Compra</button>
-  </div>
-</aside>
-
-<footer>
-  <a href="https://wa.me/244925918468" target="_blank" class="btn-whatsapp">posso ajudar?</a>
-</footer>
-
-<script>
-  // Função para formatar preços em 000.00,00 KZ
-  function formatarPreco(valor) {
-    return valor.toLocaleString("pt-AO") + " KZ";
-  }
-
-  // Inicializar preços na vitrine
-  document.querySelectorAll(".product .price").forEach(div => {
-    const preco = parseInt(div.getAttribute("data-preco"));
-    if (!isNaN(preco)) {
-      div.textContent = formatarPreco(preco);
-    }
-  });
-
-  // Carrinho via localStorage
-  let carrinho = JSON.parse(localStorage.getItem("carrinho")) || [];
-
-  function salvarCarrinho() {
-    localStorage.setItem("carrinho", JSON.stringify(carrinho));
-    renderCarrinho();
-  }
-  
-  function filtrarCategoria(categoria) {
-  const produtos = document.querySelectorAll('.product');
-  produtos.forEach(prod => {
-    if (categoria === "" || prod.dataset.categoria === categoria) {
-      prod.style.display = "flex";
-    } else {
-      prod.style.display = "none";
-    }
-  });
-}
-
-function limparFiltro() {
-  // volta o select para "Todas as Categorias"
-  const filtroDesktop = document.getElementById("filtroCategoria");
-  const filtroMobile = document.getElementById("filtroCategoriaMobile");
-
-  if (filtroDesktop) filtroDesktop.value = "";
-  if (filtroMobile) filtroMobile.value = "";
-
-  // mostra todos os produtos
-  filtrarCategoria("");
-}
-
-
-  function adicionarItem(id, nome, preco, sugId) {
-    const item = carrinho.find(i => i.id === id);
-    if (item) {
-      item.qtd++;
-    } else {
-      carrinho.push({ id, nome, preco, qtd: 1 });
-    }
-    salvarCarrinho();
-    gerarSugestao(nome, sugId);
-  }
-  
-  
-
-  function adicionarPizza(nome, selectId, sugId) {
-    const select = document.getElementById(selectId);
-    const preco = parseInt(select.selectedOptions[0].dataset.preco);
-    const tamanho = select.value;
-    const id = selectId + "-" + tamanho;
-    const item = carrinho.find(i => i.id === id);
-    if (item) {
-      item.qtd++;
-    } else {
-      carrinho.push({ id, nome: nome + " " + tamanho, preco, qtd: 1 });
-    }
-    salvarCarrinho();
-    gerarSugestao(nome, sugId);
-  }
-
-  function removerCarrinho(id) {
-    carrinho = carrinho.filter(i => i.id !== id);
-    salvarCarrinho();
-  }
-
-  function alterarQtd(id, delta) {
-    const item = carrinho.find(i => i.id === id);
-    if (!item) return;
-    item.qtd += delta;
-    if (item.qtd <= 0) removerCarrinho(id);
-    salvarCarrinho();
-  }
-
-  function renderCarrinho() {
-    const itemsDiv = document.getElementById("cart-items");
-    const totalDiv = document.getElementById("cart-total");
-    itemsDiv.innerHTML = "";
-    let total = 0;
-    carrinho.forEach(i => {
-      total += i.preco * i.qtd;
-      const div = document.createElement("div");
-      div.className = "cart-item";
-      div.innerHTML = `
-        <span class="item-name">${i.nome}</span>
-        <div class="item-controls">
-          <button onclick="alterarQtd('${i.id}', -1)">-</button>
-          <span>${i.qtd}</span>
-          <button onclick="alterarQtd('${i.id}', 1)">+</button>
-        </div>
-        <span class="item-price">${formatarPreco(i.preco * i.qtd)}</span>
-        <button class="remove" onclick="removerCarrinho('${i.id}')">x</button>
-      `;
-      itemsDiv.appendChild(div);
-    });
-    totalDiv.innerHTML = `<strong>Total: ${formatarPreco(total)}</strong>`;
-  }
-
-  function finalizarCompra() {
-  // Apenas redireciona para encomendas.html
-  window.location.href = "encomendas.html";
-}
-
-  // Sugestões IA simples
-  function gerarSugestao(nome, sugId) {
-    const sugDiv = document.getElementById(sugId);
-    if (!sugDiv) return;
-    if (nome.includes("Pizza")) {
-      sugDiv.textContent = "Sugestão: Refrigerante + Sobremesa 🍰";
-    } else if (nome.includes("Hamburguer")) {
-      sugDiv.textContent = "Sugestão: Batatas Fritas + Bebida 🥤";
-    } else if (nome.includes("Fahita")) {
-      sugDiv.textContent = "Sugestão: Molho Picante + Bebida 🥤";
-    } else if (nome.includes("Café") || nome.includes("Chá")) {
-      sugDiv.textContent = "Sugestão: Bolo ou Cheesecake 🍰";
-    } else {
-      sugDiv.textContent = "Sugestão: Experimente uma sobremesa!";
-    }
-  }
-
-  // Responsividade: abrir/fechar carrinho no mobile
-  const btnCarrinho = document.getElementById("btnCarrinho");
-  const carrinhoDiv = document.getElementById("carrinho");
-
-  if (btnCarrinho) {
-    btnCarrinho.addEventListener("click", () => {
-      carrinhoDiv.classList.toggle("active");
-    });
-  }
-
-  document.addEventListener("click", (e) => {
-    if (carrinhoDiv.classList.contains("active") && !carrinhoDiv.contains(e.target) && e.target !== btnCarrinho) {
-      carrinhoDiv.classList.remove("active");
-    }
-  });
-
-  // Menu mobile
-  const btnMenu = document.getElementById("btnMenu");
-  const desktopControls = document.querySelector(".desktop-controls");
-
-  if (btnMenu) {
-    btnMenu.addEventListener("click", () => {
-      desktopControls.style.display =
-        desktopControls.style.display === "flex" ? "none" : "flex";
-    });
-  }
-  
-  function filtrarCategoria(categoria) {
-  const produtos = document.querySelectorAll('.product');
-  produtos.forEach(prod => {
-    if (categoria === "" || prod.dataset.categoria === categoria) {
-      prod.style.display = "flex";
-    } else {
-      prod.style.display = "none";
-    }
-  });
-}
-
-
-  // Inicializar carrinho ao carregar
-  renderCarrinho();
-</script>
+  <!-- SCRIPT -->
+  <script src="script.js"></script>
 </body>
 </html>
