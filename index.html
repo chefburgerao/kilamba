@@ -6,23 +6,21 @@
   <title>Chef Burger – Menu</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* BOTÃO MENU MOBILE */
+    /* BOTÃO MENU MOBILE DENTRO DO HEADER */
     .btn-menu-mobile {
-  display: none;
-  position: fixed;
-  top: 85px;              /* logo abaixo do header de 80px */
-  left: 50%;
-  transform: translateX(-50%);
-  background: var(--blue);
-  color: #fff;
-  font-weight: bold;
-  padding: 0.6rem 1rem;
-  border: none;
-  border-radius: 8px;
-  width: 90%;
-  text-align: center;
-  z-index: 1001;          /* garante que fica acima do conteúdo */
-}
+      display: none;
+      position: absolute;
+      bottom: 5px;          /* canto inferior do header */
+      right: 10px;          /* canto direito */
+      background: var(--blue);
+      color: #fff;
+      font-weight: bold;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      text-align: center;
+      z-index: 1001;
+    }
 
     /* MENU RECOLHÍVEL */
     .menu-mobile {
@@ -33,7 +31,6 @@
       background: var(--bg);
       border-bottom: 1px solid #eee;
     }
-
     .menu-mobile select,
     .menu-mobile .btn-nav {
       width: 100%;
@@ -58,10 +55,9 @@
         <img src="imagens/logo-chefburger.jpg" alt="Chef Burger AO" />
       </a>
     </div>
+    <!-- BOTÃO MENU MOBILE DENTRO DO HEADER -->
+    <button class="btn-menu-mobile" onclick="toggleMenu()">Explorar</button>
   </header>
-
-  <!-- BOTÃO MENU MOBILE -->
-  <button class="btn-menu-mobile" onclick="toggleMenu()">Explorar</button>
 
   <!-- MENU RECOLHÍVEL MOBILE -->
   <nav class="menu-mobile" id="menuMobile">
@@ -88,6 +84,7 @@
     <a href="informacoes.html" class="btn-nav">Informações</a>
     <a href="https://wa.me/244925918468" class="btn-nav whatsapp">Posso Ajudar?</a>
   </nav>
+
 
 
   <!-- BARRA DE NAVEGAÇÃO DESKTOP -->
@@ -901,3 +898,4 @@
   </script>
 </body>
 </html>
+
