@@ -187,16 +187,13 @@ header .btn-nav.whatsapp img {
 
 /* MAIN CONTENT */
 main.content {
-  margin-top: 180px;      /* aumenta o espaço para não colar no botão */
-  margin-bottom: 80px;
+  margin-top: 150px;   /* espaço para header + barra */
+  margin-bottom: 35px; /* espaço para footer */
   padding: 1rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
 }
-
 
 /* PRODUTO */
 .product {
@@ -310,4 +307,3 @@ footer {
 
   .footer-content { flex-direction: column; text-align: center; }
 }
-
